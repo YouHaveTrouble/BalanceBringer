@@ -14,6 +14,7 @@ Setting both of those options to true will automatically snap all
 existing villagers on chunk load and prevent spawning of new ones.
 This also includes zombie villagers.
 
+<hr>
 
 Mending enchant has been an issue with game balance since it was created.
 BalanceBringer allows you to snap it away aswell.
