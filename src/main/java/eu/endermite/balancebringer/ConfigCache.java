@@ -13,9 +13,9 @@ public class ConfigCache {
         plugin.saveDefaultConfig();
         plugin.reloadConfig();
         config = plugin.getConfig();
-        villager_prevent_spawn = config.getBoolean("villagers.deny-spawn", true);
-        villager_actively_remove = config.getBoolean("villagers.actively-remove", true);
-        mending_actively_remove = config.getBoolean("mending.actively-remove", true);
+        villager_prevent_spawn = config.getBoolean("villagers.deny-spawn", false);
+        villager_actively_remove = config.getBoolean("villagers.actively-remove", false);
+        mending_actively_remove = config.getBoolean("mending.actively-remove", false);
     }
 
 }

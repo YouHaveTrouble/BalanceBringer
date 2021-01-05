@@ -1,5 +1,7 @@
+# Changing any of the "actively-remove" options to true will have permament effect on your worlds.
+# Proceed with caution.
 villagers:
-  deny-spawn: true
-  actively-remove: true
+  deny-spawn: false
+  actively-remove: false
 mending:
-  actively-remove: true
+  actively-remove: false
