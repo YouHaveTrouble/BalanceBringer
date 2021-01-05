@@ -1,0 +1,8 @@
+name: BalanceBringer
+version: ${project.version}
+main: eu.endermite.balancebringer.BalanceBringer
+api-version: 1.13
+authors: [ YouHaveTrouble ]
+commands:
+  balancebringer:
+    description: BalanceBringer command

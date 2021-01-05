@@ -1,0 +1,5 @@
+villagers:
+  deny-spawn: true
+  actively-remove: true
+mending:
+  actively-remove: true
