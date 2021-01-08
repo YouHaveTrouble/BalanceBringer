@@ -43,13 +43,11 @@ public class MendingDenierListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-    public void onLogin(org.bukkit.event.inventory.InventoryClickEvent event) {
+    public void onInvClick(org.bukkit.event.inventory.InventoryClickEvent event) {
         if (!BalanceBringer.getConfigCache().mending_actively_remove)
             return;
         replaceMendingOnItem(event.getCurrentItem());
         replaceMendingOnItem(event.getCursor());
-        Player player = (Player) event.getWhoClicked();
-        player.updateInventory();
     }
 
 
