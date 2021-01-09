@@ -5,3 +5,6 @@ villagers:
   actively-remove: false
 mending:
   actively-remove: false
+  remove-anvil-repair-limit:
+    enable: false
+    static-cost: 1
