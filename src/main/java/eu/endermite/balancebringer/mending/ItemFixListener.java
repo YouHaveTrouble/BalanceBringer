@@ -4,7 +4,9 @@ import eu.endermite.balancebringer.BalanceBringer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.AnvilInventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 
 public class ItemFixListener implements Listener {
 
@@ -14,11 +16,20 @@ public class ItemFixListener implements Listener {
         if (!BalanceBringer.getConfigCache().remove_anvil_repair_limit)
             return;
 
-        ItemStack result = event.getInventory().getResult();
-        if (result == null)
+        AnvilInventory anvilInventory = event.getInventory();
+        ItemStack item = anvilInventory.getFirstItem();
+        if (item == null)
             return;
-        result.setRepairCost(BalanceBringer.getConfigCache().anvil_repair_cost);
-        event.setResult(result);
+        if (!(item.getItemMeta() instanceof Damageable))
+            return;
+
+        int maxCost = BalanceBringer.getConfigCache().anvil_repair_cost;
+
+        if (anvilInventory.getRepairCost() >= maxCost) {
+            item.setRepairCost(maxCost);
+            anvilInventory.setMaximumRepairCost(39);
+        }
+
 
     }
 

@@ -3,7 +3,6 @@ package eu.endermite.balancebringer.mending;
 import eu.endermite.balancebringer.BalanceBringer;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;

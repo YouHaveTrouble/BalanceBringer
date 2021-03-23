@@ -25,7 +25,7 @@ BalanceBringer allows you to snap it away aswell.
       actively-remove: true
       remove-anvil-repair-limit:
         enable: true
-        static-cost: 1
+        max-cost: 35
       
 Setting `mending.actively-remove` to true will make it so all instances of mending enchantment 
 will be erased from your world and swapped with unbreaking III. Anywhere. 
@@ -34,4 +34,6 @@ Poof, gone. Easy as that.
 `remove-anvil-repair-limit` is gonna make sure players can fix their tools using anvil infinitely 
 (but they have to have resources to do that).
 
-`static-cost` is how much the base repair cost should be if repair limit is disabled.
+`max-cost` is how much the max repair cost should be if repair limit is disabled. Max cost 
+that allows infinite repairs without repairing one-by-one material and not getting "Too Expensive"
+is 35.
