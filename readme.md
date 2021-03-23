@@ -3,7 +3,7 @@
 <h2>Brings balance to the game</h2>
 <h3>(because Mojang apparently can't)</h3>
 
-<h4>This plugin is purely for [purpur](https://purpur.pl3x.net/) servers.</h4>
+<h4>This plugin is purely for <a href="https://purpur.pl3x.net/">purpur</a> servers.</h4>
 
 BalanceBringer can rid your worlds from pesky, laggy villagers with 
 overpowered trades.
