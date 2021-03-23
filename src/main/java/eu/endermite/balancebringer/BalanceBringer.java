@@ -1,5 +1,6 @@
 package eu.endermite.balancebringer;
 
+import eu.endermite.balancebringer.mending.ItemFixListener;
 import eu.endermite.balancebringer.mending.MendingDenierListener;
 import eu.endermite.balancebringer.villagers.VillagerDenierListener;
 import org.bukkit.Bukkit;
@@ -14,11 +15,21 @@ public final class BalanceBringer extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        try {
+            Class.forName("net.pl3x.purpur.PurpurConfig");
+        } catch (ClassNotFoundException e) {
+            getLogger().severe("This plugin will only work on Purpur!");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
         plugin = this;
         configCache = new ConfigCache();
 
         getServer().getPluginManager().registerEvents(new VillagerDenierListener(), this);
         getServer().getPluginManager().registerEvents(new MendingDenierListener(), this);
+        getServer().getPluginManager().registerEvents(new ItemFixListener(), this);
         BBCommand command = new BBCommand();
         getCommand("balancebringer").setExecutor(command);
         getCommand("balancebringer").setTabCompleter(command);
