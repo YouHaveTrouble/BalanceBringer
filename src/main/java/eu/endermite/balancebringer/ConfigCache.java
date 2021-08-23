@@ -1,19 +1,24 @@
 package eu.endermite.balancebringer;
 
+import eu.endermite.balancebringer.mending.MendingDenierListener;
+import eu.endermite.balancebringer.villagers.VillageGenerationListener;
+import eu.endermite.balancebringer.villagers.VillagerActiveRemoverListener;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.HandlerList;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.UUID;
 
 public class ConfigCache {
 
-    FileConfiguration config;
-    BalanceBringer plugin;
-    public boolean debug, villager_prevent_spawn, villager_actively_remove, mending_actively_remove,
-            remove_anvil_repair_limit;
-    public int anvil_repair_cost;
-    public List<World> villagerWorldBlacklist = new ArrayList<>();
+    private final FileConfiguration config;
+    private final BalanceBringer plugin;
+    public final boolean debug, villagerActivelyRemove, mendingActivelyRemove, villagesBlockGeneration;
+    public final HashSet<UUID> villagerWorldBlacklist = new HashSet<>();
 
     public ConfigCache() {
         plugin = BalanceBringer.plugin;
@@ -21,20 +26,28 @@ public class ConfigCache {
         plugin.reloadConfig();
         config = plugin.getConfig();
 
+        HandlerList.unregisterAll(plugin);
+
         debug = config.getBoolean("debug", false);
 
-        villager_prevent_spawn = getBoolean("villagers.deny-spawn", false);
-        villager_actively_remove = getBoolean("villagers.actively-remove", false);
-        mending_actively_remove = getBoolean("mending.actively-remove", false);
-        remove_anvil_repair_limit = getBoolean("mending.remove-anvil-repair-limit.enable", false);
-        anvil_repair_cost = getInt("mending.remove-anvil-repair-limit.max-cost", 35);
+        villagerActivelyRemove = getBoolean("villagers.actively-remove", false);
+        if (villagerActivelyRemove)
+            plugin.getServer().getPluginManager().registerEvents(new VillagerActiveRemoverListener(), plugin);
+
+        villagesBlockGeneration = getBoolean("villagers.generate-villages", true);
+        if (villagesBlockGeneration)
+            plugin.getServer().getPluginManager().registerEvents(new VillageGenerationListener(), plugin);
+
+        mendingActivelyRemove = getBoolean("mending.actively-remove", false);
+        if (mendingActivelyRemove)
+            plugin.getServer().getPluginManager().registerEvents(new MendingDenierListener(), plugin);
 
         // If none of the villager features are on don't populate the ignored worlds list
-        if (villager_prevent_spawn || villager_actively_remove) {
+        if (villagerActivelyRemove || villagesBlockGeneration) {
             for (String w : getStringList("villagers.ignored-worlds", new ArrayList<>())) {
                 World world = Bukkit.getWorld(w);
                 if (world != null)
-                    villagerWorldBlacklist.add(world);
+                    villagerWorldBlacklist.add(world.getUID());
             }
         }
 

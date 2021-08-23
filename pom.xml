@@ -6,13 +6,13 @@
 
     <groupId>eu.endermite</groupId>
     <artifactId>BalanceBringer</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <packaging>jar</packaging>
 
     <name>BalanceBringer</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>net.pl3x.purpur</groupId>
             <artifactId>purpur-api</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <version>1.17.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

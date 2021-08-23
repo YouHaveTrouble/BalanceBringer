@@ -1,7 +1,7 @@
 name: BalanceBringer
 version: ${project.version}
 main: eu.endermite.balancebringer.BalanceBringer
-api-version: 1.13
+api-version: 1.17
 authors: [ YouHaveTrouble ]
 commands:
   balancebringer:

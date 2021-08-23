@@ -1,13 +1,9 @@
 # Changing any of the "actively-remove" options to true will have permament effect on your worlds.
 # Proceed with caution.
 villagers:
-  deny-spawn: false
   actively-remove: false
-  ignore-worlds:
+  generate-villages: true
+  ignored-worlds:
     - example_world
 mending:
   actively-remove: false
-  remove-anvil-repair-limit:
-    enable: false
-    # warning! actual maximum cost is this value + 4 when using raw materials to repair.
-    max-cost: 35
