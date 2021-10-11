@@ -1,9 +1,25 @@
 # Changing any of the "actively-remove" options to true will have permament effect on your worlds.
 # Proceed with caution.
 villagers:
+  # Will actively remove villagers from your world. Permanently.
   actively-remove: false
+
+  # Will remove mending book trade from villagers. Permanently.
+  remove-mending-trade: false
+
+  # Should villages be generated in new chunks?
   generate-villages: true
+
+  # Worlds ignored by above settings
   ignored-worlds:
     - example_world
+piglins:
+  # Should piglins not barter?
+  disable-bartering: false
+
 mending:
+  # Will actively remove mending from items in your server. Permanently.
   actively-remove: false
+
+  # Modifier for mending effectiveness. 1.0 is normal effectiveness, 0 will not fix items at all
+  modifier: 1.0
