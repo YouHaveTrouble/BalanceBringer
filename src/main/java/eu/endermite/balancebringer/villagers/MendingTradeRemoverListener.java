@@ -13,6 +13,7 @@ import org.bukkit.inventory.MerchantInventory;
 import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MendingTradeRemoverListener implements Listener {
@@ -30,7 +31,7 @@ public class MendingTradeRemoverListener implements Listener {
     }
 
     private void removeMendingTrade(Merchant merchant) {
-        List<MerchantRecipe> trades = merchant.getRecipes();
+        List<MerchantRecipe> trades = new ArrayList<>(merchant.getRecipes());
         trades.removeIf(recipe -> {
             if (!recipe.getResult().getType().equals(Material.ENCHANTED_BOOK)) return false;
             EnchantmentStorageMeta storage = (EnchantmentStorageMeta) recipe.getResult().getItemMeta();
