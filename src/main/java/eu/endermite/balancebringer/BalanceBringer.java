@@ -12,14 +12,6 @@ public final class BalanceBringer extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        try {
-            Class.forName("net.pl3x.purpur.PurpurConfig");
-        } catch (ClassNotFoundException e) {
-            getLogger().severe("This plugin will only work on Purpur!");
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
-
         plugin = this;
         configCache = new ConfigCache();
 

@@ -38,8 +38,13 @@ public class ConfigCache {
             plugin.getServer().getPluginManager().registerEvents(new VillagerActiveRemoverListener(), plugin);
 
         boolean villagesBlockGeneration = getBoolean("villagers.generate-villages", true);
-        if (villagesBlockGeneration)
-            plugin.getServer().getPluginManager().registerEvents(new VillageGenerationListener(), plugin);
+        try {
+            Class.forName("org.purpurmc.purpur.event.world.StructureGenerateEvent");
+            if (villagesBlockGeneration)
+                plugin.getServer().getPluginManager().registerEvents(new VillageGenerationListener(), plugin);
+        } catch (ClassNotFoundException exception) {
+            plugin.getLogger().warning("Cannot prevent village generation. org.purpurmc.purpur.event.world.StructureGenerateEvent doesn't exist!");
+        }
 
         boolean removeMendingTrade = getBoolean("villagers.remove-mending-trade", false);
         if (removeMendingTrade)

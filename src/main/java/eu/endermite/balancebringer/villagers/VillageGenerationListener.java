@@ -1,11 +1,11 @@
 package eu.endermite.balancebringer.villagers;
 
 import eu.endermite.balancebringer.BalanceBringer;
-import net.pl3x.purpur.event.world.StructureGenerateEvent;
 import org.bukkit.StructureType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.purpurmc.purpur.event.world.StructureGenerateEvent;
 
 public class VillageGenerationListener implements Listener {
 
